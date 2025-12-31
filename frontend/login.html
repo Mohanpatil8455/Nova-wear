@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="box">
+    <h2>Login</h2>
+    <input type="email" id="emailId" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="register.html">Register</a></p>
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-box">
+        <p id="popupMsg"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<!-- <script>
+    function showPopup(msg){
+        document.getElementById("popupMsg").innerText = msg;
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup(){
+        document.getElementById("popup").style.display = "none";
+    }
+
+    function login(){
+        let email = document.getElementById("emailId").value;
+        let pass = document.getElementById("password").value;
+
+        if(localStorage.getItem(email) === pass){
+            localStorage.setItem("user", email);
+            showPopup("Login successful!");
+            setTimeout(()=>{ window.location="index.html"; },1000);
+        } else {
+            showPopup("Invalid email or password!");
+        }
+    }
+</script> -->
+<script>
+function showPopup(msg){
+    document.getElementById("popupMsg").innerText = msg;
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+function login(){
+    let email = document.getElementById("emailId").value;
+    let password = document.getElementById("password").value;
+
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
+    .then(res => res.text())
+    .then(userId => {
+        if(userId === "Invalid credentials"){
+            showPopup("Invalid email or password!");
+        } else {
+            localStorage.setItem("userId", userId); // ONLY userId
+            showPopup("Login successful!");
+            setTimeout(() => window.location = "index.html", 1000);
+        }
+    });
+}
+</script>
+
+</body>
+</html>

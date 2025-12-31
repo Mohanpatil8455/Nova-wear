@@ -1,0 +1,281 @@
+
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 10;
+}
+
+/* Navbar buttons */
+nav button {
+    background: #111;          /* dark button */
+    color: white;              /* text color */
+    border: none;              /* no border */
+    padding: 8px 18px;         /* button padding */
+    margin-left: 5px;          /* spacing between buttons */
+    border-radius: 5px;        /* rounded corners */
+    cursor: pointer;           
+    font-size: 14px;           
+    transition: background 0.3s, color 0.3s; /* smooth hover effect */
+}
+
+nav button:hover {
+    background: #ffcc00;       /* hover background */
+    color: #111;               /* hover text color */
+}
+
+
+header h1 { font-size: 28px; margin: 0; }
+nav a { color: white; margin: 0 15px; font-size: 17px; transition:0.3s; }
+nav a:hover { color: #ffcc00; }
+
+/* Hero Section */
+.hero {
+    background: url('https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg') center/cover no-repeat;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+.hero h2 { font-size: 50px; margin: 0; }
+.hero p { font-size: 22px; margin: 10px 0; }
+.hero button {
+    padding: 14px 30px;
+    background: #ffcc00;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.hero button:hover { background:#e6b800; }
+
+/* Products Section */
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin: 60px 0 20px;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 0 20px 60px 20px;
+    max-width: 1300px;
+    margin: auto;
+}
+.item {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+.item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+.item h3 {
+    margin: 15px 0 5px;
+    font-size: 18px;
+    color: #111;
+}
+.item p {
+    color: #777;
+    font-size: 16px;
+}
+.item button {
+    padding: 10px 22px;
+    margin: 12px 0 15px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+}
+.item button:hover {
+    background: #ffcc00;
+    color: #111;
+}
+
+#contact {
+    padding:40px 20px;
+    text-align:center;
+    background:#f8f8f8;
+}
+
+#contact h2 {
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.contact-card {
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+    background:white;
+    border-radius:10px;
+}
+
+.contact-card input,
+.contact-card textarea {
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.contact-card button {
+    padding:10px 20px;
+    background:#111;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.contact-card button:hover {
+    background:#ffcc00;
+    color:#111;
+}
+
+#responseMessage {
+    display:none;
+    color:green;
+    margin-top:10px;
+}
+/* Footer */
+footer {
+    background:#111;
+    color:white;
+    padding:60px 20px;
+}
+.footer-container {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+}
+.footer-section h3 { margin-bottom:15px; font-size:22px; }
+.footer-section p, .footer-section a { color:#ccc; font-size:16px; }
+.footer-section a:hover { color:#ffcc00; }
+.social a { margin:0 10px; color:#ccc; transition:0.3s; }
+.social a:hover { color:#ffcc00; }
+.bottom-footer { text-align:center; margin-top:30px; color:#888; }
+
+
+/* REVIEWS SECTION */
+.reviews {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.reviews h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+/* Review container */
+.review-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Individual review card */
+.review-card {
+    background: #fff;
+    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Review text */
+.review-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Reviewer name */
+.review-card h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #111;
+}
+
+/* Star rating */
+.review-card span {
+    color: #f5a623;
+    font-size: 18px;
+}
+
+/* Share Your Experience Button */
+.review-btn {
+   padding: 10px 22px;
+   width: 200px;          
+    height: 40px;  
+    margin-top: 30px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Hover effect */
+.review-btn:hover {
+     background: #ffcc00;
+    color: #111;
+}
+
+/* Active (click) effect */
+.review-btn:active {
+    transform: scale(0.97);
+}
+
+#review-button-share{
+margin-top: 15px;
+}

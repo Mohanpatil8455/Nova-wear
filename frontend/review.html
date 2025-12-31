@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <title>
+        Review page
+    </title>
+    <link rel="stylesheet" href="review.css">
+</head>
+
+<body>
+
+    <section id="reviews">
+        <h2>Share your experience with NovaWear ✨</h2>
+
+        <form id="reviewForm">
+            <input type="text" id="reviewName" placeholder="Your Name" required>
+
+            <select id="rating" required>
+                <option value="">Rating</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+
+            <textarea id="reviewText" placeholder="Write your review" required></textarea>
+
+            <button type="submit">Submit Review</button>
+        </form>
+
+        
+    </section>
+</body>
+
+<script>
+    document.getElementById("reviewForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let userId = localStorage.getItem("userId");
+                if (!userId) {
+                    showPopup("Please login first! 🔒");
+                    setTimeout(() => window.location = "login.html", 1500);
+                    return;
+                }
+
+
+        const name = document.getElementById("reviewName").value;
+        const rating = document.getElementById("rating").value;
+        const review = document.getElementById("reviewText").value;
+
+        fetch("http://localhost:3000/review", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, rating, review })
+        })
+            .then(() => {
+                alert("Review submitted successfully!");
+                document.getElementById("reviewForm").reset();
+                loadReviews();
+            });
+    });
+
+ 
+
+
+      //Attractive popup
+        function showPopup(message) {
+            // Create popup element
+            let popup = document.createElement("div");
+            popup.innerText = message;
+
+            // Style the popup
+            popup.style.position = "fixed";
+            popup.style.top = "30px";          // distance from top
+            popup.style.right = "30px";        // distance from right
+            popup.style.background = "#111";   // dark background
+            popup.style.color = "white";       // text color
+            popup.style.padding = "20px 30px"; // bigger padding
+            popup.style.borderRadius = "15px"; // rounded corners
+            popup.style.boxShadow = "0 10px 25px rgba(0,0,0,0.5)";
+            popup.style.fontSize = "18px";     // bigger font
+            popup.style.fontWeight = "bold";
+            popup.style.zIndex = "9999";
+            popup.style.opacity = "0";         // start hidden
+            popup.style.transition = "opacity 0.5s";
+
+            // Add popup to the page
+            document.body.appendChild(popup);
+
+            // Show popup after short delay
+            setTimeout(() => {
+                popup.style.opacity = "1";
+            }, 50);
+
+            // Hide popup after 3 seconds
+            setTimeout(() => {
+                popup.style.opacity = "0";
+                setTimeout(() => {
+                    popup.remove(); // remove from DOM
+                }, 500);
+            }, 3000);
+        }
+</script>
+
+</html>

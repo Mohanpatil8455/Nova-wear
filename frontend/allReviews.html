@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Reviews</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 30px 0;
+            color: #222;
+        }
+
+        #reviewList {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 20px 40px 60px;
+        }
+
+        .review-box {
+            background: #fff;
+            width: 320px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .review-box h4 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #111;
+        }
+
+        .review-box span {
+            color: #f5a623;
+            font-size: 16px;
+        }
+
+        .review-box p {
+            font-size: 15px;
+            color: #555;
+            font-style: italic;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Customer Reviews</h2>
+    <div id="reviewList"></div>
+
+    <script>
+        function loadReviews() {
+            fetch("http://localhost:3000/review")
+                .then(res => res.json())
+                .then(data => {
+                    let box = document.getElementById("reviewList");
+                    box.innerHTML = "";
+
+                    data.forEach(r => {
+                        box.innerHTML += `
+                            <div class="review-box">
+                                <h4>${r.name} <span>(${r.rating}⭐)</span></h4>
+                                <p>${r.review}</p>
+                            </div>
+                        `;
+                    });
+                });
+        }
+
+        loadReviews();
+    </script>
+
+</body>
+</html>

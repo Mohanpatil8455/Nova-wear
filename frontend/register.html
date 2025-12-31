@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+ <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+<div class="box">
+    <h2>Register</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-box">
+        <p id="popupMsg"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<!-- <script>
+    function showPopup(msg){
+        document.getElementById("popupMsg").innerText = msg;
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup(){
+        document.getElementById("popup").style.display = "none";
+        window.location = "login.html"; // redirect to login after registration
+    }
+
+    function register(){
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        if(email === "" || password === ""){
+            showPopup("Please enter both email and password.");
+            return;
+        }
+
+        localStorage.setItem(email, password);
+        showPopup("Registration successful!");
+    }
+</script> -->
+
+<script>
+function showPopup(msg){
+    document.getElementById("popupMsg").innerText = msg;
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+    window.location = "login.html";
+}
+
+function register(){
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
+    .then(res => res.text())
+    .then(msg => showPopup(msg));
+}
+</script>
+
+
+</body>
+</html>

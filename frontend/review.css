@@ -1,0 +1,114 @@
+/* REVIEWS SECTION */
+#reviews {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+#reviews h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* REVIEW FORM */
+#reviewForm {
+    max-width: 500px;
+    margin: 0 auto 50px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Inputs & textarea */
+#reviewForm input,
+#reviewForm select,
+#reviewForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+#reviewForm input:focus,
+#reviewForm select:focus,
+#reviewForm textarea:focus {
+    border-color: #111;
+}
+
+/* Textarea */
+#reviewForm textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* SUBMIT BUTTON */
+#reviewForm button {
+    width: 100%;
+    padding: 14px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* Button hover */
+#reviewForm button:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* REVIEW LIST */
+#reviewList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+/* REVIEW CARD */
+.review-card {
+    background: #fff;
+    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Review text */
+.review-card p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+/* Reviewer name */
+.review-card h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #111;
+}
+
+/* Stars */
+.review-card span {
+    color: #f5a623;
+    font-size: 18px;
+}
